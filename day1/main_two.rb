@@ -57,14 +57,14 @@ end
 def main
   test_solution = get_solution(get_input('day1/test_input2.txt'))&.to_s
   if test_solution == TEST_SOLUTION
-    puts "Passes Test Case :)"
-    puts "Here's the answer:"
+    puts 'Passes Test Case :)'
     get_solution(get_input('day1/input.txt'))
+    puts "Here is the answer:"
   else
-    puts "FAILED. IMAGINE THINKING THAT WOULD WORK"
-    puts "Should be:"
+    puts 'FAILED. IMAGINE THINKING THAT WOULD WORK'
+    puts 'Should be:'
     puts TEST_SOLUTION
-    puts "Was unfortunately:"
+    puts 'Was unfortunately:'
     puts test_solution
     nil
   end

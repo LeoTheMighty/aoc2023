@@ -9,26 +9,14 @@
 set -o noclobber
 
 echo "Creating solution directory $1"
-if [ ! -d "src/$1" ]; then
+if [ ! -d "$1" ]; then
   # Control will enter here if $DIRECTORY doesn't exist.
-  mkdir "src/$1"
-  touch "src/$1/mod.rs"
-  echo "pub mod solution;" >> "src/$1/mod.rs"
-  cp "src/common/solution.rs" "src/$1/solution.rs"
-
-  touch "src/$1/input_test.txt"
+  mkdir "$1"
+  cp "main.tmpl.rb" "$1/main.rb"
+  cp "main_two.tmpl.rb" "$1/main_two.rb"
+  touch "$1/input.txt"
+  touch "$1/input_test.txt"
+  touch "$1/input_test2.txt"
 else
   echo "Directory already exists, aborting..."
 fi
-
-echo "mod common { pub mod common; }
-mod $1;
-
-fn main() {
-    common::common::print_solution(
-        $1::solution::get_solution(\"./src/$1/input.txt\"),
-        $1::solution::get_solution(\"./src/$1/input_test.txt\"),
-        \"$2\"
-    );
-}
-" >| "./src/main.rs"

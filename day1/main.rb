@@ -34,18 +34,10 @@ end
 
 def main
   test_solution = get_solution(get_input('day1/test_input.txt'))&.to_s
-  if test_solution == TEST_SOLUTION
-    puts "Passes Test Case :)"
-    puts "Here's the answer:"
-    get_solution(get_input('day1/input.txt'))
-  else
-    puts "FAILED. IMAGINE THINKING THAT WOULD WORK"
-    puts "Should be:"
-    puts TEST_SOLUTION
-    puts "Was unfortunately:"
-    puts test_solution
-    nil
-  end
+  return unless assert_answer(test_solution, TEST_SOLUTION)
+
+  real_answer = get_solution(get_input('day1/input.txt'))
+  puts "Here's the answer: \n#{real_answer}"
 end
 
-puts main
+main
