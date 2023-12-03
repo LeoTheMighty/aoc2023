@@ -21,7 +21,11 @@ rescue StandardError => e
   nil
 end
 
+def get_lines(input)
+  input&.split("\n")
+end
+
 def get_input_lines(file_path)
-  get_input(file_path)&.split("\n")
+  get_lines(get_input(file_path))
 end
 
